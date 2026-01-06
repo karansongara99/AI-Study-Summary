@@ -30,9 +30,13 @@ export async function summarizeText(
 ) {
   const cleanedContent = cleanMarkdown(content);
 
-  const { titleLength = "medium", includeActionItems = false, includeTLDR = false, tone = "informative" } = options;
+  const {
+    titleLength = "medium",
+    includeActionItems = true,
+    includeTLDR = false,
+    tone = "informative",
+  } = options;
 
-  // Construct dynamic instructions based on options
   const prompt = `
 You are an AI summarization engine.
 
@@ -45,28 +49,29 @@ IMPORTANT RULES:
 - Title length preference: ${titleLength}
 
 OUTPUT FORMAT (STRICT):
+
 Title:
-A concise title (according to length preference).
+A concise title based on the content.
 
 Short Overview:
-1 paragraph summarizing the content clearly and accurately.
+One clear paragraph summarizing the content.
 
 Key Points:
-- Point 1
-- Point 2
-- Point 3
+- Provide EXACTLY 4 important, non-redundant points
+- Each point must represent a meaningful insight from the content
 
 ${
   includeActionItems
-    ? `Action Items:
-- Suggested next steps or recommendations based on the content`
+    ? `Actionable Notes:
+- Provide EXACTLY 10 concrete, practical, and actionable notes
+- Focus on what a reader should DO, DECIDE, or IMPROVE based on the content`
     : ""
 }
 
 Conclusion:
-1–2 sentence conclusion.
+1–2 sentence clear conclusion.
 
-${includeTLDR ? "TL;DR:\n- One-line concise summary" : ""}
+${includeTLDR ? "TL;DR:\n- One-line ultra-concise summary" : ""}
 
 CONTENT TO SUMMARIZE:
 ${cleanedContent}

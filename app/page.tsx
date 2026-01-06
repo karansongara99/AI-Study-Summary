@@ -15,7 +15,7 @@ export default function HomePage() {
 
           {/* Title */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-            🤖 AI Study <span className="text-blue-400">Summarizer</span>
+            🤖 AI Study <span className="text-blue-400">Summary</span>
           </h1>
 
           {/* Description */}
@@ -64,7 +64,7 @@ export default function HomePage() {
             <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
               <h3 className="font-semibold mb-2 text-lg">🧠 Smart</h3>
               <p className="text-sm text-gray-300">
-                Cleans markdown and README formatting before summarizing.
+                Cleans markdown and README formatting before summary.
               </p>
             </div>
           </div>
